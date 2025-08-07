@@ -116,12 +116,7 @@ export const Nav = () => {
                     </div>
                 </div>
 
-                <Link
-                    href="/new-in"
-                    className="hover:text-[var(--primary)] transition-colors"
-                >
-                    New In
-                </Link>
+             
             </div>
 
             <div className="md:hidden flex items-center space-x-4">

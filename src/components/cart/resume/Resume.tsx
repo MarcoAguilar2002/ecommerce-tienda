@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaStickyNote } from "react-icons/fa";
 
@@ -14,7 +15,7 @@ export const Resume = () => {
             {/* Sección de Nota */}
             <div className="mb-2 sm:mb-4">
                 <div className="flex border-b">
-                    <div className="flex-1 py-1 sm:py-2 text-center font-medium text-sm sm:text-base border-b-2 border-red-600">
+                    <div className="flex-1 py-1 sm:py-2 text-center font-medium text-sm sm:text-base border-b-2 border-[var(--primary)]">
                         <FaStickyNote className="inline mr-1 sm:mr-2" /> Nota
                     </div>
                 </div>
@@ -30,9 +31,12 @@ export const Resume = () => {
                 </div>
             </div>
 
-            <button className="w-full bg-red-600 text-white py-1 sm:py-2 rounded mt-2 sm:mt-4 text-sm sm:text-base">
+            <Link
+                href="/checkout"
+                className="block w-full bg-[var(--primary)] text-white py-1 sm:py-2 rounded mt-2 sm:mt-4 text-sm sm:text-base text-center"
+            >
                 Verificar
-            </button>
+            </Link>
         </div>
     );
 };

@@ -1,8 +1,5 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { QuantitySelector } from "@/components";
-import { FaStickyNote, FaShippingFast } from "react-icons/fa";
+
 import { Details, Resume } from "@/components";
 
 export default function CartPage() {
