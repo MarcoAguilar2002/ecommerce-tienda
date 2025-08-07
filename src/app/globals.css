@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------
+   🌿 1. Paleta de colores base
+--------------------------------- */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --primary: #6B8F71;         /* Verde oliva */
+  --secondary: #CDB89C;       /* Arena tostada */
+  --foreground-rgb: 47, 62, 70; /* Texto oscuro */
+  --background-start-rgb: 245, 243, 235; /* Blanco hueso */
   --background-end-rgb: 255, 255, 255;
+  --footer-bg: #354F52;       /* Verde bosque */
+  --footer-text: #F0EFEB;     /* Blanco marfil */
 }
 
+/* ------------------------------
+   🌓 2. Modo oscuro (opcional)
+--------------------------------- */
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -15,19 +26,94 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+*/
 
+/* ------------------------------
+   📄 3. Estilos globales
+--------------------------------- */
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    transparent,
+    rgb(var(--background-start-rgb))
+  ) rgb(var(--background-end-rgb));
 }
 
+/* ------------------------------
+   ✨ 4. Animaciones globales
+--------------------------------- */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fade-in {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+/* ------------------------------
+   🎨 5. Botones reutilizables
+--------------------------------- */
+.btn-primary {
+  @apply bg-[var(--primary)] hover:bg-[#52755B] text-white py-2 px-4 rounded transition-all;
+}
+
+.btn-secondary {
+  @apply bg-[var(--secondary)] hover:bg-[#bda98b] text-[var(--foreground-rgb)] py-2 px-4 rounded transition-all;
+}
+
+/* ------------------------------
+   🧩 6. Utilidades personalizadas
+--------------------------------- */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* 💫 Fondo con efecto brillo */
+  .shine-bg {
+    @apply relative overflow-hidden;
+    background: var(--primary);
+  }
+
+  .shine-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.1) 30%,
+      rgba(255, 255, 255, 0.05) 60%,
+      transparent 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* 🔘 Botón de navegación */
+  .nav-btn {
+    @apply px-3 py-1.5 rounded-full transition duration-200 hover:bg-white/10 text-sm font-medium tracking-wide relative z-10;
+  }
+
+  /* 🧭 Botón con ícono */
+  .icon-btn {
+    @apply p-2 rounded-full transition duration-200 hover:bg-white/10 text-lg flex items-center justify-center relative z-10;
+  }
+
+  /* 🦶 Estilo para el footer */
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
   }
 }
