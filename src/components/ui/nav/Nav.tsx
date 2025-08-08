@@ -6,15 +6,16 @@ import { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { FiUser, FiShoppingBag } from "react-icons/fi";
 import { BiSearch } from "react-icons/bi";
-import { useUIStore } from "@/store";
+import { useUIStore, useShop } from "@/store";
 
 export const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const toggleMenu = () => setIsOpen(!isOpen);
+
 
     const cartCount = 3;
 
     const openSideMenu = useUIStore(state => state.openSideMenu);
+    const openSideMenuShop = useShop(state => state.openSideShopMenu);
 
     return (
         <nav className="bg-[#F5F3EB] text-[rgb(var(--foreground-rgb))] p-4 flex items-center w-full  justify-between md:justify-around z-50">
@@ -116,7 +117,7 @@ export const Nav = () => {
                     </div>
                 </div>
 
-             
+
             </div>
 
             <div className="md:hidden flex items-center space-x-4">
@@ -154,8 +155,8 @@ export const Nav = () => {
                     </Link>
                 ))}
 
-                <Link
-                    href="/cart"
+                <button onClick={() => openSideMenuShop()}
+
                     className="group relative flex items-center justify-center w-10 h-10 rounded-full"
                 >
                     <span className="absolute inset-0 z-0 rounded-full bg-[var(--primary)] opacity-0 scale-75 transition-all duration-300 group-hover:scale-125 group-hover:opacity-20 pointer-events-none" />
@@ -167,7 +168,9 @@ export const Nav = () => {
                             {cartCount}
                         </span>
                     )}
-                </Link>
+                </button>
+
+
             </div>
 
 

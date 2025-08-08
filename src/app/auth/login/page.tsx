@@ -1,11 +1,14 @@
-import React from 'react'
+"use client";
+import Link from "next/link";
+import React, { useState } from "react";
 
-const page = () => {
+import { LoginForm } from "./ui/LoginForm";
+
+export default function LoginPage() {
+
   return (
-    <div>
-      Auth
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <LoginForm />
     </div>
-  )
+  );
 }
-
-export default page

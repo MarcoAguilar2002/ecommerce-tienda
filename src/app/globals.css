@@ -7,6 +7,7 @@
 --------------------------------- */
 :root {
   --primary: #6B8F71;         /* Verde oliva */
+  --primary-hover: #4e7254;
   --secondary: #CDB89C;       /* Arena tostada */
   --foreground-rgb: 47, 62, 70; /* Texto oscuro */
   --background-start-rgb: 245, 243, 235; /* Blanco hueso */

@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Size {
+  XS
+  S
+  M
+  L
+  XL
+  XXL
+  XXXL
+}
+
+enum Role {
+  admin
+  user
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  phone         String    @unique
+  email         String    @unique
+  emailVerified DateTime?
+  password      String
+  role          Role      @default(user)
+}
+
+model Category {
+  id          String    @id @default(uuid())
+  name        String
+  img         String
+  slug        String    @unique
+  description String
+  products    Product[]
+}
+
+model Collection {
+  id          String    @id @default(uuid())
+  name        String
+  slug        String    @unique
+  description String?
+  img         String
+  products    Product[]
+}
+
+model Color {
+  id       String           @id @default(uuid())
+  name     String
+  hex      String
+  variants ProductVariant[]
+}
+
+model Product {
+  id           String           @id @default(uuid())
+  title        String
+  description  String
+  slug         String           @unique
+  tags         String[]         @default([])
+  category     Category         @relation(fields: [categoryId], references: [id])
+  categoryId   String
+  collection   Collection?      @relation(fields: [collectionId], references: [id])
+  collectionId String?
+  variants     ProductVariant[]
+}
+
+model ProductVariant {
+  id        String  @id @default(uuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  color   Color  @relation(fields: [colorId], references: [id])
+  colorId String
+
+  size  Size
+  stock Int  @default(0)
+
+  images       ProductVariantImage[]
+  orderDetails OrderDetail[]
+}
+
+model ProductVariantImage {
+  id        String         @id @default(uuid())
+  url       String
+  variant   ProductVariant @relation(fields: [variantId], references: [id])
+  variantId String
+}
+
+model Company {
+  id                 String  @id @default(uuid())
+  name               String
+  description        String?
+  qrCodeUrl          String
+  logoWithTextUrl    String
+  logoWithoutTextUrl String
+}
+
+model Order {
+  id            String        @id @default(uuid())
+  customerName  String
+  customerEmail String
+  note          String
+  isPaid        Boolean       @default(false)
+  total         Float         @default(0)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  orderDetails  OrderDetail[]
+}
+
+model OrderDetail {
+  id        String         @id @default(uuid())
+  quantity  Int
+  price     Float
+  variant   ProductVariant @relation(fields: [variantId], references: [id])
+  variantId String
+  order     Order          @relation(fields: [orderId], references: [id])
+  orderId   String
+}

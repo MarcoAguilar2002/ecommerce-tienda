@@ -1,4 +1,4 @@
-import { Nav, Footer, SliderInfinity, Sidebar } from "@/components";
+import { Nav, Footer, SliderInfinity, Sidebar, SidebarShop } from "@/components";
 
 export default function ShopLayout({
   children
@@ -8,8 +8,9 @@ export default function ShopLayout({
   return (
     <main className="min-h-screen ">
       <Sidebar />
+      <SidebarShop />
       <SliderInfinity />
-      
+
       <Nav />
       {children}
       <Footer />

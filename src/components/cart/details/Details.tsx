@@ -7,14 +7,19 @@ import { titleFont } from "@/config/fonts";
 
 export const Details = () => {
     return (
-        <div className="w-full bg-white p-4 sm:p-6 shadow rounded-lg">
-            <div className="flex items-center justify-between mb-4">
+        <div className="w-full bg-white p-4 sm:p-6 shadow rounded-lg space-y-4">
+            <div className="flex items-center justify-between ">
                 <h2 className="text-lg sm:text-xl font-semibold">Mi Carrito</h2>
                 <h2 className="text-lg sm:text-xl font-semibold text-gray-400">(1 <span>producto</span>)</h2>
             </div>
+            <div>
+                <Link href="/" className="text-[var(--primary)]  inline-block text-sm sm:text-base hover:underline">
+                    Seguir comprando →
+                </Link>
+            </div>
             <div className="border-t pt-4">
                 {/* Header for larger screens */}
-                <div className="hidden sm:grid sm:grid-cols-[2fr_1fr_1fr] sm:gap-4 font-semibold mb-2">
+                <div className="hidden sm:grid sm:grid-cols-[2fr_1fr_1fr] sm:gap-4 font-semibold ">
                     <p>Producto</p>
                     <p className="text-center">Cantidad</p>
                     <p className="text-right">Subtotal</p>
@@ -43,9 +48,7 @@ export const Details = () => {
                     </div>
                 </div>
             </div>
-            <Link href="/" className="text-orange-500 mt-4 inline-block text-sm sm:text-base hover:underline">
-                Seguir comprando →
-            </Link>
+
         </div>
     );
 };

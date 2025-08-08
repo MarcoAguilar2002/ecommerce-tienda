@@ -42,7 +42,6 @@ export const Sidebar = () => {
                     <SidebarLink href="/" icon={<IoTicketOutline size={25} />} text="Mis Pedidos" />
                     <SidebarLink href="/" icon={<IoShirtOutline size={25} />} text="Ropa" />
                     <SidebarLink href="/" icon={<GiClothes size={25} />} text="Colecciones" />
-                    <SidebarLink href="/" icon={<MdOutlineNewReleases size={25} />} text="New In" />
                     <SidebarLink href="/" icon={<IoLogInOutline size={25} />} text="Ingresar" />
                     <SidebarLink href="/" icon={<IoLogOutOutline size={25} />} text="Salir" />
                     <hr className="my-4" />
@@ -59,7 +58,7 @@ const SidebarLink = ({ href, icon, text }: { href: string, icon: React.ReactNode
     <Link
         href={href}
         className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
-        onClick={(e) => e.stopPropagation()} // evita cerrar el menú si se hace click dentro
+        onClick={(e) => e.stopPropagation()} 
     >
         {icon}
         <span className="ml-3 text-lg">{text}</span>

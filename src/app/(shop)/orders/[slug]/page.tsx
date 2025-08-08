@@ -1,8 +1,13 @@
+import { Order } from "@/components";
 
-export default function Order() {
+export default function OrderPage() {
   return (
-    <div>
-      <h1>Order A</h1>
-    </div>
+    <>
+      <div className="min-h-screen flex items-center justify-center">
+        <Order />
+      </div>
+    </>
+
+
   );
 }

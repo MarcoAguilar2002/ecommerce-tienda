@@ -10,18 +10,16 @@ import { Collection as CollectionProps } from "@/interfaces/collection";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import type { NavigationOptions } from "swiper/types";
 
+interface Props {
+  collections: CollectionProps[]
+}
 
-export const Collections = () => {
+export const Collections = ({collections}:Props) => {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
   const swiperRef = useRef<SwiperCore | null>(null);
 
-  const collections: CollectionProps[] = Array(8).fill({
-    name: "Susurro del Bosque",
-    slug: "/susurro-del-bosque",
-    description: "Elegant forest-inspired collection",
-    img: "/images/ropa/colection.webp",
-  });
+  
 
   useEffect(() => {
     if (
